@@ -7,7 +7,7 @@ export const BrandsDeal = () => {
         <div className="bg-white shadow-sm overflow-hidden">
           <div className="flex flex-col md:flex-row">
             <div className="p-8 md:p-12 flex flex-col justify-center md:w-1/2">
-              <p className="text-gray-500 text-sm mb-3">Brand's deal</p>
+              <p className="text-gray-500 text-sm mb-3">Brand&apos;s deal</p>
 
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 Save up to $200 on select Samsung washing machine
@@ -18,12 +18,14 @@ export const BrandsDeal = () => {
               </p>
 
               <div>
+
                 <a
                   href="#"
                   className="inline-block text-blue-500 font-medium hover:underline"
                 >
                   Shop now
                 </a>
+
               </div>
             </div>
 

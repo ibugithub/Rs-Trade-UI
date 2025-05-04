@@ -1,5 +1,5 @@
 'use client';
-
+import Image from 'next/image';
 import { useState } from 'react';
 
 export const TopCategory = () => {
@@ -105,7 +105,7 @@ export const TopCategory = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-white mt-16">
       {/* Today's Best Deal Section */}
       <div className="mb-6 flex justify-between items-center">
-        <h2 className="text-2xl font-bold text-gray-800">Today's best deal</h2>
+        <h2 className="text-2xl font-bold text-gray-800">Today&apos;s best deal</h2>
         <a href="#" className="text-blue-500 hover:underline">See more</a>
       </div>
       
@@ -117,7 +117,9 @@ export const TopCategory = () => {
               <span className="absolute top-2 left-2 bg-white py-1 px-2 rounded-full text-xs font-medium text-gray-600">
                 Sale!
               </span>
-              <img 
+              <Image
+                width={200}
+                height={200}
                 src={product.image} 
                 alt={product.name} 
                 className="w-full h-48 object-contain p-4"
@@ -145,7 +147,9 @@ export const TopCategory = () => {
               <span className="absolute top-2 left-2 bg-white py-1 px-2 rounded-full text-xs font-medium text-gray-600">
                 Sale!
               </span>
-              <img 
+              <Image
+                width={200}
+                height={200}
                 src={product.image} 
                 alt={product.name} 
                 className="w-full h-48 object-contain p-4"

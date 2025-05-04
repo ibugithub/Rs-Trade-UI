@@ -89,7 +89,7 @@ export const NavBar = () => {
             New arrivals
           </Link>
           <Link href="/todays-deal" className="hover:text-blue-100">
-            Today's deal
+            Today&apos;s deal
           </Link>
           <Link href="/gift-cards" className="hover:text-blue-100">
             Gift cards
@@ -129,7 +129,7 @@ export const NavBar = () => {
               New arrivals
             </Link>
             <Link href="/todays-deal" className="block text-white hover:bg-blue-700 px-3 py-2 rounded-md">
-              Today's deal
+              Today&apos;s deal
             </Link>
             <Link href="/gift-cards" className="block text-white hover:bg-blue-700 px-3 py-2 rounded-md">
               Gift cards

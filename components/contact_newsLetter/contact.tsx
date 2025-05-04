@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { useState } from 'react';
 
 export const  Contact = () => {
@@ -42,7 +43,9 @@ export const  Contact = () => {
             
             {/* Right side with team image */}
             <div className="flex justify-center">
-              <img 
+              <Image
+                width={200}
+                height={200}
                 src="/images/contactImage.png" 
                 alt="Support team"
                 className="h-32 object-contain"
