@@ -10,7 +10,6 @@ import { BottomBanner } from "@/components/banners/bottomBanner";
 import { BottomCategory } from "@/components/Categories/bottomCategory";
 import { BrandsDeal } from "@/components/Categories/brandsDeal";
 import { Contact } from "@/components/contact_newsLetter/contact";
-import { NewsLetter } from "@/components/contact_newsLetter/newsLetter";
 import { Footer } from "@/components/footer/footer";
 
 export default function Page() {
@@ -28,7 +27,6 @@ export default function Page() {
       <BottomCategory />
       <BrandsDeal />
       <Contact />
-      <NewsLetter />
       <Footer />
     </div>
 

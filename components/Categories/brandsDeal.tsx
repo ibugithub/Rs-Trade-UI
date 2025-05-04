@@ -4,7 +4,7 @@ export const BrandsDeal = () => {
   return (
     <>
       <div className="max-w-7xl mx-auto px-4 mt-16">
-        <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+        <div className="bg-white shadow-sm overflow-hidden">
           <div className="flex flex-col md:flex-row">
             <div className="p-8 md:p-12 flex flex-col justify-center md:w-1/2">
               <p className="text-gray-500 text-sm mb-3">Brand's deal</p>
