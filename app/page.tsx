@@ -3,8 +3,15 @@ import { Hero } from "@/components/Hero/hero";
 import { TopCategory } from "@/components/Categories/topCategory";
 import { TopBanner } from "@/components/banners/topBanner";
 import { MidBanner1 } from "@/components/banners/midBanner1";
-import { MidCategory2 } from "@/components/Categories/midCategory2";
+import { MidCategory1 } from "@/components/Categories/midCategory1";
 import { MidBanner2 } from "@/components/banners/midBanner2";
+import { MidCategory2 } from "@/components/Categories/midCategory2";
+import { BottomBanner } from "@/components/banners/bottomBanner";
+import { BottomCategory } from "@/components/Categories/bottomCategory";
+import { BrandsDeal } from "@/components/Categories/brandsDeal";
+import { Contact } from "@/components/contact_newsLetter/contact";
+import { NewsLetter } from "@/components/contact_newsLetter/newsLetter";
+import { Footer } from "@/components/footer/footer";
 
 export default function Page() {
   return (
@@ -14,8 +21,15 @@ export default function Page() {
       <TopBanner />
       <TopCategory />
       <MidBanner1 />
-      <MidCategory2 />
+      <MidCategory1 />
       <MidBanner2 />
+      <MidCategory2 />
+      <BottomBanner />
+      <BottomCategory />
+      <BrandsDeal />
+      <Contact />
+      <NewsLetter />
+      <Footer />
     </div>
 
   );
