@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export const TopCategory = () => {
   const [ratings] = useState({
@@ -106,7 +107,8 @@ export const TopCategory = () => {
       {/* Today's Best Deal Section */}
       <div className="mb-6 flex justify-between items-center">
         <h2 className="text-2xl font-bold text-gray-800">Today&apos;s best deal</h2>
-        <a href="#" className="text-blue-500 hover:underline">See more</a>
+        <Link href="/category_details" className="text-blue-500 hover:underline">See more</Link>
+        
       </div>
       
       {/* First Row of Products */}
