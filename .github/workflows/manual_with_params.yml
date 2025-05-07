@@ -30,7 +30,7 @@ jobs:
 
       - name: Display Greeting
         run: |
-          echo "{{inputs.gretting}}, ${{ inputs.name }}"
+          echo "${{inputs.gretting}}, ${{ inputs.name }}"
 
       - name: Display File Content
         run: |
