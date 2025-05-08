@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const categories = [
   {
@@ -112,9 +113,7 @@ export const MidCategory1 = () => {
         <div key={i} className="bg-white p-6">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-semibold">{category.title}</h2>
-            <a href={category.link} className="text-blue-600 text-sm font-medium">
-              See more
-            </a>
+            <Link href="/category_details" className="text-blue-500 hover:underline">See more</Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {category.products.map((product, j) => (

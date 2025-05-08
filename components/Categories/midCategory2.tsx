@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 // Star rating component
 const StarRating = ({ rating }) => {
@@ -62,9 +63,7 @@ const ProductCategory = ({ title, products, showMoreLink }) => {
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-bold text-gray-800">{title}</h2>
         {showMoreLink && (
-          <a href="#" className="text-blue-500 text-sm">
-            See more
-          </a>
+          <Link href="/category_details" className="text-blue-500 hover:underline">See more</Link>
         )}
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

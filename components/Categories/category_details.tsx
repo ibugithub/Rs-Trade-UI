@@ -3,13 +3,14 @@
 import { useState } from 'react';
 import { Star, ChevronDown, Heart, ArrowUpDown } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 
 export const CategoryDetails = () => {
   // State for sorting selection
   const [sortOption, setSortOption] = useState('Featured');
   const [showSortDropdown, setShowSortDropdown] = useState(false);
-  
+
   // Sample product data
   const products = [
     {
@@ -110,11 +111,11 @@ export const CategoryDetails = () => {
   // Render stars for ratings
   const renderStars = (rating) => {
     return Array(5).fill(0).map((_, i) => (
-      <Star 
+      <Star
         key={i}
         size={14}
-        className={i < Math.floor(rating) ? "text-yellow-400 fill-yellow-400" : 
-                 (i < rating && i > Math.floor(rating) - 1 ? "text-yellow-400 fill-yellow-400" : "text-gray-300")} 
+        className={i < Math.floor(rating) ? "text-yellow-400 fill-yellow-400" :
+          (i < rating && i > Math.floor(rating) - 1 ? "text-yellow-400 fill-yellow-400" : "text-gray-300")}
       />
     ));
   };
@@ -139,27 +140,27 @@ export const CategoryDetails = () => {
             <span>All Departments</span>
             <ChevronDown size={14} className="ml-1" />
           </button>
-          
+
           <button className="bg-white border border-gray-300 px-3 py-1 rounded text-sm flex items-center">
             <span>Include Out of Stock</span>
             <ChevronDown size={14} className="ml-1" />
           </button>
         </div>
-        
+
         <div className="relative mt-2 sm:mt-0">
-          <button 
+          <button
             className="bg-white border border-gray-300 px-3 py-1 rounded text-sm flex items-center"
             onClick={() => setShowSortDropdown(!showSortDropdown)}
           >
             <span>Sort by: {sortOption}</span>
             <ArrowUpDown size={14} className="ml-1" />
           </button>
-          
+
           {showSortDropdown && (
             <div className="absolute right-0 mt-1 w-48 bg-white border border-gray-200 shadow-lg rounded z-10">
               <ul>
                 {['Featured', 'Price: Low to High', 'Price: High to Low', 'Customer Review', 'Newest Arrivals'].map(option => (
-                  <li 
+                  <li
                     key={option}
                     className="px-4 py-2 text-sm hover:bg-gray-100 cursor-pointer"
                     onClick={() => {
@@ -203,23 +204,26 @@ export const CategoryDetails = () => {
                 </div>
               )}
             </div>
-            
+
             {/* Product Image */}
-            <div className="flex justify-center mb-3">
-              <Image
-                width={200}
-                height={200}
-                src={product.image} 
-                alt={product.title} 
-                className="h-48 object-contain cursor-pointer hover:scale-105 transition-transform" 
-              />
-            </div>
-            
+            <Link href={`/product/${product.id}`}>
+              <div className="flex justify-center mb-3">
+                <Image
+                  width={200}
+                  height={200}
+                  src={product.image}
+                  alt={product.title}
+                  className="h-48 object-contain cursor-pointer hover:scale-105 transition-transform"
+                />
+              </div>
+            </Link>
+
+
             {/* Product Title */}
             <h2 className="text-sm mb-1 line-clamp-2 hover:text-orange-500 cursor-pointer">
               {product.title}
             </h2>
-            
+
             {/* Product Rating */}
             <div className="flex items-center mb-1">
               <div className="flex mr-1">
@@ -229,7 +233,7 @@ export const CategoryDetails = () => {
                 {product.reviews.toLocaleString()}
               </span>
             </div>
-            
+
             {/* Product Price */}
             <div className="mb-1">
               {product.discount && (
@@ -248,7 +252,7 @@ export const CategoryDetails = () => {
                 </span>
               )}
             </div>
-            
+
             {/* Action Buttons */}
             <div className="mt-3 flex justify-between">
               <button className="bg-yellow-400 hover:bg-yellow-500 px-2 py-1 rounded-full text-xs shadow-sm flex-grow">
@@ -261,7 +265,7 @@ export const CategoryDetails = () => {
           </div>
         ))}
       </div>
-      
+
       {/* Pagination */}
       <div className="flex justify-center mt-8 mb-6">
         <div className="inline-flex border border-gray-300 rounded overflow-hidden">
@@ -269,8 +273,8 @@ export const CategoryDetails = () => {
             Previous
           </button>
           {[1, 2, 3, 4, 5].map(page => (
-            <button 
-              key={page} 
+            <button
+              key={page}
               className={`px-3 py-1 border-r border-gray-300 ${page === 1 ? 'bg-orange-500 text-white' : 'hover:bg-gray-100'}`}
             >
               {page}

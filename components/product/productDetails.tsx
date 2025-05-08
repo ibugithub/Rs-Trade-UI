@@ -1,0 +1,260 @@
+'use client'
+import { useState } from 'react';
+import { Star, Heart, Share2, Package, Gift, ChevronRight, ChevronDown } from 'lucide-react';
+import Image from 'next/image';
+export const ProductDetails = ({productId} : {productId : string}) => {
+  const [selectedImage, setSelectedImage] = useState(0);
+  const [quantity, setQuantity] = useState(1);
+  console.log(productId)
+  // Sample product data
+  const product = {
+    name: "Premium Bluetooth Headphones",
+    price: 79.99,
+    rating: 4.5,
+    reviewCount: 2347,
+    inStock: true,
+    description: "Experience premium sound quality with these wireless Bluetooth headphones. Features active noise cancellation, 30-hour battery life, and comfortable over-ear design.",
+    images: [
+      "/images/headphone.jpg",
+      "/images/headphone.jpg", 
+      "/images/headphone.jpg",
+      "/images/headphone.jpg",
+      "/images/headphone.jpg",
+    ],
+    details: [
+      "High-definition sound with powerful bass",
+      "Active noise cancellation technology",
+      "30-hour battery life",
+      "Quick charge: 5 minutes for 2 hours of playback",
+      "Bluetooth 5.2 connectivity"
+    ],
+    deliveryDate: "Friday, May 9"
+  };
+
+  // Function to render stars
+  const renderStars = (rating) => {
+    const stars = [];
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 >= 0.5;
+    
+    for (let i = 0; i < 5; i++) {
+      if (i < fullStars) {
+        stars.push(<Star key={i} className="fill-yellow-400 text-yellow-400" size={18} />);
+      } else if (i === fullStars && hasHalfStar) {
+        stars.push(<Star key={i} className="text-yellow-400" size={18} />);
+      } else {
+        stars.push(<Star key={i} className="text-gray-300" size={18} />);
+      }
+    }
+    
+    return stars;
+  };
+
+  return (
+    <div className="max-w-6xl mx-auto p-4 bg-white">
+      {/* Breadcrumb */}
+      <div className="flex items-center text-sm text-gray-500 mb-4">
+        <span className="hover:text-blue-500 cursor-pointer">Home</span>
+        <ChevronRight size={16} />
+        <span className="hover:text-blue-500 cursor-pointer">Electronics</span>
+        <ChevronRight size={16} />
+        <span className="hover:text-blue-500 cursor-pointer">Headphones</span>
+        <ChevronRight size={16} />
+        <span className="font-medium text-gray-700">{product.name}</span>
+      </div>
+      
+      <div className="flex flex-col md:flex-row gap-8">
+        {/* Product Images Section */}
+        <div className="w-full md:w-2/5">
+          <div className="sticky top-4">
+            {/* Main Image */}
+            <div className="border border-gray-200 rounded-lg mb-2 p-2 bg-gray-50">
+              <Image
+                width={500}
+                height={500}
+                src={product.images[selectedImage]} 
+                alt={product.name}
+                className="w-full h-96 object-contain"
+              />
+            </div>
+            
+            {/* Image Thumbnails */}
+            <div className="flex gap-2 overflow-x-auto py-2">
+              {product.images.map((img, index) => (
+                <div 
+                  key={index}
+                  className={`border-2 rounded cursor-pointer w-16 h-16 flex-shrink-0 ${selectedImage === index ? 'border-orange-500' : 'border-gray-200'}`}
+                  onClick={() => setSelectedImage(index)}
+                >
+                  <Image
+                    width={64}
+                    height={64} 
+                    src={img} 
+                    alt={`${product.name} view ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+            
+            {/* Share buttons */}
+            <div className="flex mt-4 gap-4">
+              <button className="flex items-center text-sm text-blue-600 hover:underline">
+                <Share2 size={16} className="mr-1" /> Share
+              </button>
+              <button className="flex items-center text-sm text-blue-600 hover:underline">
+                <Heart size={16} className="mr-1" /> Add to List
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        {/* Product Info Section */}
+        <div className="w-full md:w-3/5">
+          <h1 className="text-2xl font-medium mb-1">{product.name}</h1>
+          
+          {/* Ratings */}
+          <div className="flex items-center mb-2">
+            <div className="flex mr-2">
+              {renderStars(product.rating)}
+            </div>
+            <a href="#reviews" className="text-sm text-blue-500 hover:underline">
+              {product.reviewCount} ratings
+            </a>
+          </div>
+          
+          {/* Price */}
+          <div className="mb-4">
+            <div className="flex items-baseline">
+              <span className="text-sm text-gray-500 line-through mr-2">$99.99</span>
+              <span className="text-xl font-medium">${product.price}</span>
+              <span className="ml-2 text-sm bg-red-100 text-red-700 px-1 rounded">-20%</span>
+            </div>
+            <p className="text-sm text-gray-500">
+              & Free Returns
+            </p>
+          </div>
+          
+          <hr className="my-4" />
+          
+          {/* Short Description */}
+          <div className="mb-6">
+            <p className="text-sm">{product.description}</p>
+          </div>
+          
+          {/* Product Details */}
+          <div className="mb-6">
+            <h3 className="font-medium mb-2">About this item</h3>
+            <ul className="list-disc pl-5 text-sm space-y-1">
+              {product.details.map((detail, index) => (
+                <li key={index}>{detail}</li>
+              ))}
+            </ul>
+          </div>
+          
+          <hr className="my-4" />
+          
+          {/* Purchase Section */}
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
+            <div className="text-xl font-medium mb-2">${product.price}</div>
+            
+            <div className="flex items-center mb-2">
+              <Package size={16} className="text-gray-500 mr-2" />
+              <p className="text-sm">
+                <span className="text-green-700 font-medium">FREE delivery </span> 
+                <span className="font-medium">{product.deliveryDate}</span>
+              </p>
+            </div>
+            
+            <div className="text-sm mb-4">
+              {product.inStock ? (
+                <span className="text-green-600 font-medium">In Stock</span>
+              ) : (
+                <span className="text-red-600">Out of Stock</span>
+              )}
+            </div>
+            
+            {/* Quantity Selector */}
+            <div className="mb-4">
+              <label className="block text-sm mb-1">Quantity:</label>
+              <select 
+                value={quantity} 
+                onChange={(e) => setQuantity(parseInt(e.target.value))}
+                className="border border-gray-300 rounded p-1 pr-8 text-sm"
+              >
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
+                  <option key={num} value={num}>{num}</option>
+                ))}
+              </select>
+            </div>
+            
+            {/* Buttons */}
+            <div className="space-y-2">
+              <button className="w-full bg-yellow-400 hover:bg-yellow-500 py-2 rounded-full text-sm font-medium transition">
+                Add to Cart
+              </button>
+              <button className="w-full bg-orange-500 hover:bg-orange-600 py-2 rounded-full text-sm font-medium transition">
+                Buy Now
+              </button>
+            </div>
+            
+            {/* Secure transaction */}
+            <div className="mt-4 text-xs flex items-center text-gray-500">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+              Secure transaction
+            </div>
+            
+            {/* Ships from */}
+            <div className="mt-3 text-xs">
+              <div className="flex justify-between mb-1">
+                <span className="text-gray-500">Ships from</span>
+                <span>Amazon</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-500">Sold by</span>
+                <span>Amazon.com</span>
+              </div>
+            </div>
+            
+            {/* Add gift options */}
+            <div className="mt-3">
+              <label className="flex items-center text-sm">
+                <input type="checkbox" className="mr-2" />
+                <Gift size={16} className="mr-1" />
+                Add a gift receipt
+              </label>
+            </div>
+          </div>
+          
+          {/* Additional Sections Collapsed */}
+          <div className="space-y-2">
+            <div className="border border-gray-200 rounded p-3">
+              <div className="flex justify-between items-center cursor-pointer">
+                <h3 className="font-medium">Product Details</h3>
+                <ChevronDown size={18} />
+              </div>
+            </div>
+            
+            <div className="border border-gray-200 rounded p-3">
+              <div className="flex justify-between items-center cursor-pointer">
+                <h3 className="font-medium">Customer Reviews</h3>
+                <ChevronDown size={18} />
+              </div>
+            </div>
+            
+            <div className="border border-gray-200 rounded p-3">
+              <div className="flex justify-between items-center cursor-pointer">
+                <h3 className="font-medium">Questions & Answers</h3>
+                <ChevronDown size={18} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProductDetails;
