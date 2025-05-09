@@ -1,0 +1,29 @@
+name: "Runner test on macOS machine"
+on:
+  workflow_dispatch
+
+permissions:
+  contents: write
+
+jobs:
+  runs-on-macos:
+    runs-on: macos-latest
+  
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      
+      - name: create a file
+        run: |
+          echo Hello, World! > helloMac.txt 
+      
+      - name: configure git
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+      
+      - name: commit and push
+        run: |
+          git add helloMac.txt
+          git commit -m 'add helloMac.txt'
+          git push
