@@ -1,20 +1,11 @@
 'use client'
 import { useState } from 'react';
-<<<<<<< HEAD
 import { Star, Heart, Share2, Package, Gift, ChevronRight, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 export const ProductDetails = ({productId} : {productId : string}) => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   console.log(productId)
-=======
-import { Star, Heart, ShoppingCart, Share2, Package, Gift, ChevronRight, ChevronDown } from 'lucide-react';
-
-export const ProductDetails = ({productId} : {productId : string}) => {
-  const [selectedImage, setSelectedImage] = useState(0);
-  const [quantity, setQuantity] = useState(1);
-  
->>>>>>> 981153660716c2c1c00e35f04726c4adafe20e94
   // Sample product data
   const product = {
     name: "Premium Bluetooth Headphones",
@@ -24,19 +15,11 @@ export const ProductDetails = ({productId} : {productId : string}) => {
     inStock: true,
     description: "Experience premium sound quality with these wireless Bluetooth headphones. Features active noise cancellation, 30-hour battery life, and comfortable over-ear design.",
     images: [
-<<<<<<< HEAD
       "/images/headphone.jpg",
       "/images/headphone.jpg", 
       "/images/headphone.jpg",
       "/images/headphone.jpg",
       "/images/headphone.jpg",
-=======
-      "/api/placeholder/500/500",
-      "/api/placeholder/500/500", 
-      "/api/placeholder/500/500",
-      "/api/placeholder/500/500",
-      "/api/placeholder/500/500"
->>>>>>> 981153660716c2c1c00e35f04726c4adafe20e94
     ],
     details: [
       "High-definition sound with powerful bass",
@@ -86,13 +69,9 @@ export const ProductDetails = ({productId} : {productId : string}) => {
           <div className="sticky top-4">
             {/* Main Image */}
             <div className="border border-gray-200 rounded-lg mb-2 p-2 bg-gray-50">
-<<<<<<< HEAD
               <Image
                 width={500}
                 height={500}
-=======
-              <img 
->>>>>>> 981153660716c2c1c00e35f04726c4adafe20e94
                 src={product.images[selectedImage]} 
                 alt={product.name}
                 className="w-full h-96 object-contain"
@@ -107,13 +86,9 @@ export const ProductDetails = ({productId} : {productId : string}) => {
                   className={`border-2 rounded cursor-pointer w-16 h-16 flex-shrink-0 ${selectedImage === index ? 'border-orange-500' : 'border-gray-200'}`}
                   onClick={() => setSelectedImage(index)}
                 >
-<<<<<<< HEAD
                   <Image
                     width={64}
                     height={64} 
-=======
-                  <img 
->>>>>>> 981153660716c2c1c00e35f04726c4adafe20e94
                     src={img} 
                     alt={`${product.name} view ${index + 1}`}
                     className="w-full h-full object-cover"
