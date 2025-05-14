@@ -69,26 +69,21 @@ export const ProductDetails = ({ productId }: { productId: string }) => {
     setShowZoom(false)
   }
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (imageContainerRef.current) {
       const { left, top, width, height } = imageContainerRef.current.getBoundingClientRect();
 
-      // Calculate relative position within the image (0 to 1)
       const relativeX = (e.clientX - left) / width;
       const relativeY = (e.clientY - top) / height;
 
-      // Ensure values are between 0 and 1
       const boundedX = Math.max(0, Math.min(1, relativeX));
       const boundedY = Math.max(0, Math.min(1, relativeY));
 
-      // Calculate cursor position for lens
       setCursorPosition({
         x: e.clientX - left,
         y: e.clientY - top
       });
 
-      // Calculate background position for zoomed image
-      // This creates the effect of moving the zoomed portion as the cursor moves
       setZoomPosition({
         x: boundedX * 100,
         y: boundedY * 100
@@ -153,7 +148,7 @@ export const ProductDetails = ({ productId }: { productId: string }) => {
                 >
                   <div
                     style={{
-                      backgroundImage: `url(${product.images[selectedImage].src || product.images[selectedImage]})`,
+                      backgroundImage: `url(${product.images[selectedImage]})`,
                       backgroundPosition: `${zoomPosition.x}% ${zoomPosition.y}%`,
                       backgroundRepeat: 'no-repeat',
                       backgroundSize: `${zoomFactor * 100}%`,
