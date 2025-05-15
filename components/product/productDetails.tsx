@@ -1,6 +1,6 @@
 'use client'
 import { useRef, useState } from 'react';
-import { Star, Heart, Share2, Package, Gift, ChevronRight, ChevronDown } from 'lucide-react';
+import { Star, Heart, Share2, Package, ChevronRight, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 
 
