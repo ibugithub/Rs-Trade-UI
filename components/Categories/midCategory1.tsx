@@ -7,6 +7,7 @@ const categories = [
     link: "#",
     products: [
       {
+        id: 'product1',
         title: "Max 5.1 Home Theater",
         price: "$620.00",
         oldPrice: null,
@@ -14,6 +15,7 @@ const categories = [
         isOnSale: false,
       },
       {
+        id: 'product2',
         title: "V-Series 5.1 Home Theater",
         price: "$499.00",
         oldPrice: "$799.00",
@@ -21,6 +23,7 @@ const categories = [
         isOnSale: true,
       },
       {
+        id: 'product3',
         title: "OLED C4 Series 55” 4K TV",
         price: "$1,249.00",
         oldPrice: null,
@@ -28,6 +31,7 @@ const categories = [
         isOnSale: false,
       },
       {
+        id: 'product4',
         title: "X90J 65 Inch TV 4K",
         price: "$1,329.00",
         oldPrice: "$1,499.00",
@@ -41,6 +45,7 @@ const categories = [
     link: "#",
     products: [
       {
+        id: 'product5',
         title: "Multigroomer Grooming Kit",
         price: "$44.00",
         oldPrice: "$60.00",
@@ -48,6 +53,7 @@ const categories = [
         isOnSale: true,
       },
       {
+        id: 'product6',
         title: "Compact Pulsator Washer",
         price: "$259.00",
         oldPrice: "$319.00",
@@ -55,6 +61,7 @@ const categories = [
         isOnSale: false,
       },
       {
+        id: 'product7',
         title: "Full-Auto Compact Washer",
         price: "$270.00",
         oldPrice: "$309.00",
@@ -62,6 +69,7 @@ const categories = [
         isOnSale: true,
       },
       {
+        id: 'product8',
         title: "Small Space Dryer",
         price: "$349.00",
         oldPrice: null,
@@ -75,6 +83,7 @@ const categories = [
     link: "#",
     products: [
       {
+        id: 'product9',
         title: "AC 5000 BTU for Small Rooms",
         price: "$139.00",
         oldPrice: "$159.00",
@@ -82,6 +91,7 @@ const categories = [
         isOnSale: true,
       },
       {
+        id: 'product10',
         title: "Dual Hose Portable AC",
         price: "$184.00",
         oldPrice: null,
@@ -89,6 +99,7 @@ const categories = [
         isOnSale: false,
       },
       {
+        id: 'product11',
         title: "Star 5,000 BTU AC w/ Wi-Fi",
         price: "$199.00",
         oldPrice: null,
@@ -96,6 +107,7 @@ const categories = [
         isOnSale: false,
       },
       {
+        id: 'product12',
         title: "BTU Window AC w/ Remote",
         price: "$179.00",
         oldPrice: null,
@@ -124,7 +136,13 @@ export const MidCategory1 = () => {
                       Sale!
                     </span>
                   )}
-                  <Image src={product.image} alt={product.title} fill className="object-contain" />
+
+                  <Link href={`product/${product.id}`}>
+                    <Image src={product.image} alt={product.title} width={200}
+                      height={200}
+                      className="w-full h-48 object-contain p-4"
+                    />
+                  </Link>
                 </div>
                 <div className="text-xs text-yellow-500 mb-1">★★★★★</div>
                 <h3 className="text-sm font-medium line-clamp-2">{product.title}</h3>
