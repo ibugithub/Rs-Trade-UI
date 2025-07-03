@@ -2,7 +2,7 @@
 import { useRef, useState } from 'react';
 import { Star, Heart, Share2, Package, ChevronRight, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
-
+import Link from 'next/link';
 
 export const ProductDetails = ({ productId }: { productId: string }) => {
   const [selectedImage, setSelectedImage] = useState(0);
@@ -275,12 +275,16 @@ export const ProductDetails = ({ productId }: { productId: string }) => {
 
             {/* Buttons */}
             <div className="space-y-2">
-              <button className="w-full bg-yellow-400 hover:bg-yellow-500 py-2 rounded-full text-sm font-medium transition">
-                Add to Cart
-              </button>
-              <button className="w-full bg-orange-500 hover:bg-orange-600 py-2 rounded-full text-sm font-medium transition">
-                Buy Now
-              </button>
+              <Link href="/cart" className="block">
+                <button className="w-full bg-yellow-400 hover:bg-yellow-500 py-2 rounded-full text-sm font-medium transition">
+                  Add to Cart
+                </button>
+              </Link>
+              <Link href="/buy_now" className="block">
+                <button className="w-full bg-orange-500 hover:bg-orange-600 py-2 rounded-full text-sm font-medium transition">
+                  Buy Now
+                </button>
+              </Link>
             </div>
 
             {/* Secure transaction */}
