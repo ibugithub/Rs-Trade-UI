@@ -275,12 +275,12 @@ export const ProductDetails = ({ productId }: { productId: string }) => {
 
             {/* Buttons */}
             <div className="space-y-2">
-              <Link href="/cart" className="block">
+              <Link href="/cart/add-to-cart" className="block">
                 <button className="w-full bg-yellow-400 hover:bg-yellow-500 py-2 rounded-full text-sm font-medium transition">
                   Add to Cart
                 </button>
               </Link>
-              <Link href="/buy_now" className="block">
+              <Link href="/checkout" className="block">
                 <button className="w-full bg-orange-500 hover:bg-orange-600 py-2 rounded-full text-sm font-medium transition">
                   Buy Now
                 </button>
