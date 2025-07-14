@@ -2,15 +2,26 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { SideBar } from './sidebar';
+
 export const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [allProductClicked, setAllProductClicked] = useState(false);
+
+  const handleAllProductClick = () => {
+    setAllProductClicked((prev) => !prev);
+  }
+
+  const handleCloseSidebar = () => {
+    setAllProductClicked(false);
+  };
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-blue-500 z-50 pb-3 pt-2">
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main navbar content */}
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="flex items-center">
               <div className="w-8 h-8 bg-yellow-300 rounded-full flex items-center justify-center mr-1">
@@ -56,7 +67,7 @@ export const NavBar = () => {
             {/* Mobile menu button */}
             <button
               className="md:hidden text-white hover:text-blue-100"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={handleAllProductClick}
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {isMenuOpen ? (
@@ -72,9 +83,11 @@ export const NavBar = () => {
         {/* Category links - desktop */}
         <div className="hidden md:flex justify-start space-x-8 py-2 text-white">
           <div className="relative group">
-            <Link href="/products" className="flex items-center hover:text-blue-100">
+            <div className="flex cursor-pointer items-center hover:text-blue-100"
+              onClick={() => setAllProductClicked((prev) => !prev)}
+            >
               All products <span className="ml-1">▼</span>
-            </Link>
+            </div>
           </div>
           <Link href="/home-appliances" className="hover:text-blue-100">
             Home appliances
@@ -137,6 +150,9 @@ export const NavBar = () => {
           </div>
         )}
       </div>
+
+      <SideBar isOpen={allProductClicked} onClose={handleCloseSidebar} />
+  
     </nav>
   );
 };
